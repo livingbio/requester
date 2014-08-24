@@ -364,7 +364,7 @@ class DefaultBidGenerator(object):
       bid_request: a realtime_bidding_pb2.BidRequest instance
     """
     self._GeneratePublisherData(bid_request)
-    bid_request.detected_language = random.choice(LANGUAGE_CODES)
+    bid_request.detected_language.append(random.choice(LANGUAGE_CODES))
     self._GenerateVerticals(bid_request)
 
   def _GenerateAdSlot(self, bid_request):
