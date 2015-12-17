@@ -428,13 +428,13 @@ class DefaultBidGenerator(object):
     for generated_id in generated_ids:
       ad_data = ad_slot.matching_ad_data.add()
       ad_data.adgroup_id = generated_id
+      ad_data.minimum_cpm_micros = random.randint(1, 99) * 10000
 
       # 10% of adgroup requests will have a direct deal enabled
       if random.random() < 0.10:
         direct_deal = ad_data.direct_deal.add()
         direct_deal.direct_deal_id = random.randint(1, MAX_DIRECT_DEAL_ID)
-        direct_deal.fixed_cpm_micros = random.randint(1, 99) * 10000
-        ad_data.minimum_cpm_micros = direct_deal.fixed_cpm_micros
+        direct_deal.fixed_cpm_micros = ad_data.minimum_cpm_micros
 
   def _GenerateVerticals(self, bid_request):
     """Populates bid_request with random verticals.

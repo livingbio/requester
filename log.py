@@ -211,7 +211,7 @@ class LogSummarizer(object):
       'invalid-slot-id': 'ad slot id is not present in the BidRequest.'
   }
 
-  CLICK_URL_UNESC = 'http://www.google.com/url?sa=D&q='
+  CLICK_URL_UNESC = 'https://www.google.com/url?sa=D&q='
   CLICK_URL_ESC = EscapeUrl(CLICK_URL_UNESC)
   CLICK_URL_UNESC_RE = re.compile('%%CLICK_URL_UNESC(:(.*?))?%%')
   CLICK_URL_ESC_RE = re.compile('%%CLICK_URL(_ESC){1,2}(:(.*?))?%%')

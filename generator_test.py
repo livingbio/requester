@@ -106,7 +106,6 @@ class RandomBidGeneratorTest(unittest.TestCase):
     expected_scalar_fields = [
         'is_test',
         'id',
-        'detected_language',
         'geo_criteria_id',
         'google_user_id',
         'cookie_version',
@@ -118,6 +117,9 @@ class RandomBidGeneratorTest(unittest.TestCase):
     for field in expected_scalar_fields:
       self.assertTrue(bid_request.HasField(field),
                       'Bid request missing field: %s' % field)
+
+    # One detected language should be defined.
+    self.assertEqual(1, len(bid_request.detected_language))
 
     # Either postal_code or postal_code_prefix should be defined
     if not bid_request.HasField('postal_code'):
